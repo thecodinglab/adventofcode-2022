@@ -4,8 +4,11 @@
 #include <iostream>
 #include <set>
 #include <string>
+#include <utility>
 #include <vector>
 
-#include "helpers.hpp"
+#include "helpers/cmp.hpp"
+#include "helpers/debug.hpp"
+#include "helpers/math.hpp"
 
 using namespace std;
