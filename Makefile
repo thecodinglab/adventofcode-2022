@@ -8,7 +8,9 @@ CFLAGS += -I include/
 CHALLENGE_NR ?= $(shell date '+%d')
 CHALLENGE_DIR = $(SRC_DIR)/day-$(CHALLENGE_NR)
 
-run.%: $(CHALLENGE_DIR)/solution.%.bin
+-include .env
+
+run.%: $(CHALLENGE_DIR)/solution.%.bin $(CHALLENGE_DIR)/input.txt
 	$< < $(CHALLENGE_DIR)/input.txt
 
 sample.%: $(CHALLENGE_DIR)/solution.%.bin
@@ -23,4 +25,8 @@ sample.%: $(CHALLENGE_DIR)/solution.%.bin
 %/solution.a.cpp:
 	cp -r $(TEMPLATE_DIR) $(dir $@)
 
-.PRECIOUS: %/solution.a.cpp %/solution.b.cpp %.bin
+%/input.txt:
+	$(eval DAY=$(patsubst 0%,%,$(patsubst $(SRC_DIR)/day-%/input.txt,%,$@)))
+	curl 'https://adventofcode.com/2022/day/$(DAY)/input' -H 'cookie: session=$(SESSION)' --compressed > $@
+
+.PRECIOUS: %/input.txt %/solution.a.cpp %/solution.b.cpp %.bin
