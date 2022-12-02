@@ -20,11 +20,11 @@ int main() {
     }
   }
 
-  sort(calories.begin(), calories.end());
+  sort(calories.begin(), calories.end(), descending());
 
   int total_top_three = 0;
   for (int i = 0; i < 3; i++) {
-    total_top_three += calories[calories.size() - i - 1];
+    total_top_three += calories[i];
   }
 
   cout << total_top_three << endl;
