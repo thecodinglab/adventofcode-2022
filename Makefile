@@ -19,7 +19,7 @@ sample.%: $(CHALLENGE_DIR)/solution.%.bin
 %.bin: %.cpp
 	$(CC) $(CFLAGS) -o $@ $<
 
-%/solution.c.cpp: %/solution.a.cpp
+%/solution.b.cpp: %/solution.a.cpp
 	[ ! -f $@ ] && cp $< $@ || true
 
 %/solution.a.cpp:
