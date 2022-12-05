@@ -30,3 +30,5 @@ sample.%: $(CHALLENGE_DIR)/solution.%.bin
 	curl 'https://adventofcode.com/2022/day/$(DAY)/input' -H 'cookie: session=$(SESSION)' --compressed > $@
 
 .PRECIOUS: %/input.txt %/solution.a.cpp %/solution.b.cpp %.bin
+
+include util/leaderboard.makefile
