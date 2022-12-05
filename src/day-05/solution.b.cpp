@@ -1,9 +1,5 @@
 #include "base.hpp"
 
-#include <cstdio>
-#include <stack>
-#include <string>
-
 int main() {
   vector<vector<char>> stacks;
 

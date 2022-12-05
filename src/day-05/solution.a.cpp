@@ -1,9 +1,5 @@
 #include "base.hpp"
 
-#include <cstdio>
-#include <stack>
-#include <string>
-
 int main() {
   vector<vector<char>> stacks;
 
@@ -45,7 +41,7 @@ int main() {
     auto &to = stacks[to_idx - 1];
 
     for (int i = 0; i < count; i++) {
-      char c = from[count - i - 1];
+      char c = from[0];
       cout << "move " << c << " from " << from_idx << " to " << to_idx << endl;
 
       from.erase(from.begin());

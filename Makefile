@@ -3,7 +3,7 @@ BIN_DIR = bin
 TEMPLATE_DIR = $(SRC_DIR)/_template
 
 CC=/usr/bin/g++
-CFLAGS += -I include/
+CFLAGS += -std=c++20 -I include/
 
 CHALLENGE_NR ?= $(shell date '+%d')
 CHALLENGE_DIR = $(SRC_DIR)/day-$(CHALLENGE_NR)
