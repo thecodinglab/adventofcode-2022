@@ -1,8 +1,11 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <functional>
 #include <iostream>
+#include <numeric>
 #include <set>
+#include <sstream>
 #include <string>
 #include <unordered_map>
 #include <utility>
