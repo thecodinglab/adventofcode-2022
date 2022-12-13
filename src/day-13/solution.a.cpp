@@ -12,13 +12,13 @@ struct node {
   vector<shared_ptr<node>> children;
 };
 
-shared_ptr<node> read() {
+shared_ptr<node> read(istream &stream) {
   string line;
-  getline(cin, line);
+  getline(stream, line);
 
   cout << "read line " << line << endl;
 
-  if (!cin)
+  if (!stream)
     return nullptr;
 
   stack<shared_ptr<node>> nodes;
@@ -112,16 +112,16 @@ int compare(const shared_ptr<node> &a, const shared_ptr<node> &b) {
   return -1;
 }
 
-int main() {
+void run(istream &stream) {
   int idx = 0;
   int sum = 0;
 
   while (1) {
-    auto left = read();
-    auto right = read();
+    auto left = read(stream);
+    auto right = read(stream);
 
     string line;
-    getline(cin, line);
+    getline(stream, line);
 
     if (!left || !right) {
       cout << left << " " << right << endl;
@@ -139,5 +139,19 @@ int main() {
   }
 
   cout << sum << endl;
+}
+
+#include <fstream>
+
+int main(int argc, char **argv) {
+  if (argc == 1) {
+    run(cin);
+    return 0;
+  }
+
+  ifstream stream(argv[1]);
+  run(stream);
+  stream.close();
+
   return 0;
 }

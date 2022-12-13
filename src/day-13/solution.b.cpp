@@ -12,13 +12,13 @@ struct node {
   vector<shared_ptr<node>> children;
 };
 
-shared_ptr<node> read() {
+shared_ptr<node> read(istream &stream) {
   string line;
-  getline(cin, line);
+  getline(stream, line);
 
   cout << "read line " << line << endl;
 
-  if (!cin)
+  if (!stream)
     return nullptr;
 
   stack<shared_ptr<node>> nodes;
@@ -128,11 +128,11 @@ shared_ptr<node> create_divider_packet(int value) {
   return outer_list;
 }
 
-int main() {
+void run(istream &stream) {
   vector<shared_ptr<node>> nodes;
 
-  while (cin) {
-    auto node = read();
+  while (stream) {
+    auto node = read(stream);
     if (!node)
       continue;
 
@@ -158,5 +158,19 @@ int main() {
   }
 
   cout << key << endl;
+}
+
+#include <fstream>
+
+int main(int argc, char **argv) {
+  if (argc == 1) {
+    run(cin);
+    return 0;
+  }
+
+  ifstream stream(argv[1]);
+  run(stream);
+  stream.close();
+
   return 0;
 }
