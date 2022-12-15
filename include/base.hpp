@@ -1,11 +1,15 @@
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <cstdint>
 #include <functional>
 #include <iostream>
+#include <memory>
 #include <numeric>
+#include <queue>
 #include <set>
 #include <sstream>
+#include <stack>
 #include <string>
 #include <unordered_map>
 #include <utility>
