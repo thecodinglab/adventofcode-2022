@@ -3,13 +3,6 @@
 #include <queue>
 #include <utility>
 
-struct pair_hash {
-  template <class T1, class T2>
-  std::size_t operator()(const std::pair<T1, T2> &pair) const {
-    return std::hash<T1>()(pair.first) ^ std::hash<T2>()(pair.second);
-  }
-};
-
 struct node {
   pair<int, int> pos;
   vector<pair<int, int>> path;
@@ -45,7 +38,7 @@ node shortest_path(const vector<int> &heights, int width, int height,
 
   priority_queue<node, vector<node>, function<bool(const node &, const node &)>>
       queue(comparator);
-  unordered_map<pair<int, int>, node, pair_hash> visited;
+  unordered_map<pair<int, int>, node> visited;
 
   queue.push({pos, {}});
 
