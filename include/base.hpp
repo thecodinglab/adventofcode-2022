@@ -1,3 +1,5 @@
+#pragma once
+
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -15,6 +17,7 @@
 #include <utility>
 #include <vector>
 
+#include "helpers/array.hpp"
 #include "helpers/cmp.hpp"
 #include "helpers/math.hpp"
 #include "helpers/pair.hpp"

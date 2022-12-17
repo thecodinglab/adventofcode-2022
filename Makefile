@@ -13,7 +13,7 @@ CHALLENGE_DIR = $(SRC_DIR)/day-$(CHALLENGE_NR)
 run.%: $(CHALLENGE_DIR)/solution.%.bin $(CHALLENGE_DIR)/input.txt
 	$< < $(CHALLENGE_DIR)/input.txt
 
-sample.%: $(CHALLENGE_DIR)/solution.%.bin
+sample.%: $(CHALLENGE_DIR)/solution.%.bin $(CHALLENGE_DIR)/sample.txt
 	$< < $(CHALLENGE_DIR)/sample.txt
 
 %.bin: %.cpp
@@ -29,6 +29,9 @@ sample.%: $(CHALLENGE_DIR)/solution.%.bin
 	$(eval DAY=$(patsubst 0%,%,$(patsubst $(SRC_DIR)/day-%/input.txt,%,$@)))
 	curl 'https://adventofcode.com/2022/day/$(DAY)/input' -H 'cookie: session=$(SESSION)' --compressed > $@
 
-.PRECIOUS: %/input.txt %/solution.a.cpp %/solution.b.cpp %.bin
+%/sample.txt:
+	touch $@
+
+.PRECIOUS: %/input.txt %/sample.txt %/solution.a.cpp %/solution.b.cpp %.bin
 
 include util/leaderboard.makefile

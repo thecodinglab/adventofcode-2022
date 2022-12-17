@@ -1,3 +1,5 @@
+#pragma once
+
 #include <type_traits>
 
 template <typename T, typename = typename std::enable_if<
