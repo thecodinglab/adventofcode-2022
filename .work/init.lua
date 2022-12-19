@@ -7,7 +7,7 @@ local function build_executable(exe)
   local cwd = vim.fn.getcwd()
   local target = exe:sub(cwd:len() + 2)
 
-  return os.execute('make -C "' .. cwd .. '" "' .. target .. '"')
+  return os.execute('DEBUG=1 make -C "' .. cwd .. '" "' .. target .. '"')
 end
 
 local function debug_executable()
