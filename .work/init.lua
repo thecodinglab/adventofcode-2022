@@ -1,5 +1,3 @@
-local M = {}
-
 local function find_executable()
   local file = vim.api.nvim_buf_get_name(0)
   return file:gsub('cpp$', 'bin')
@@ -20,29 +18,25 @@ local function debug_executable()
   end
 end
 
-function M.setup()
-  local dap = require('dap')
+local dap = require('dap')
 
-  dap.configurations.cpp = {
-    {
-      name = 'debug sample',
-      type = 'lldb',
-      request = 'launch',
-      program = debug_executable,
-      cwd = '${fileDirname}',
-      args = { 'sample.txt' },
-      stopOnEntry = false,
-    },
-    {
-      name = 'debug input',
-      type = 'lldb',
-      request = 'launch',
-      program = debug_executable,
-      cwd = '${fileDirname}',
-      args = { 'input.txt' },
-      stopOnEntry = false,
-    },
-  }
-end
-
-return M
+dap.configurations.cpp = {
+  {
+    name = 'debug sample',
+    type = 'lldb',
+    request = 'launch',
+    program = debug_executable,
+    cwd = '${fileDirname}',
+    args = { 'sample.txt' },
+    stopOnEntry = false,
+  },
+  {
+    name = 'debug input',
+    type = 'lldb',
+    request = 'launch',
+    program = debug_executable,
+    cwd = '${fileDirname}',
+    args = { 'input.txt' },
+    stopOnEntry = false,
+  },
+}
