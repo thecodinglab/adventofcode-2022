@@ -22,6 +22,7 @@
 #include "helpers/math.hpp"
 #include "helpers/pair.hpp"
 #include "helpers/tuple.hpp"
+#include "helpers/y_combinator.hpp"
 #include "third_party/cxx-prettyprint/prettyprint.hpp"
 
 using namespace std;
