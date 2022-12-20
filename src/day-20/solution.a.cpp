@@ -34,13 +34,20 @@ void run(istream &stream) {
 
     int64_t new_idx = mod(idx + node.num, len - 1);
 
-    numbers.erase(numbers.begin() + idx);
-    numbers.insert(numbers.begin() + new_idx, node);
+    if (new_idx > idx) {
+      auto from = numbers.begin() + idx;
+      auto to = numbers.begin() + new_idx;
+      rotate(from, from + 1, to + 1);
+    } else if (new_idx < idx) {
+      auto from = numbers.rbegin() + (len - idx - 1);
+      auto to = numbers.rbegin() + (len - new_idx - 1);
+      rotate(from, from + 1, to + 1);
+    }
 
     // cout << node.num << ": " << numbers << endl;
   }
 
-  cout << numbers << endl;
+  // cout << numbers << endl;
 
   vector<int64_t> indices = {
       1000,
