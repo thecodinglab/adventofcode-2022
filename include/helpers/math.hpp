@@ -7,6 +7,6 @@ template <typename T, typename = typename std::enable_if<
 T mod(T a, T b) {
   T m = a % b;
   if (m < 0)
-    m = (b < 0) ? (m - b) : (m + b);
+    m += abs(b);
   return m;
 }
